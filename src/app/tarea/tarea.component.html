@@ -58,66 +58,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Diseño de interfaz</td>
-                <td>Crear mockups de la aplicación</td>
-                <td>Ana Gómez</td>
-                <td>20/05/2025</td>
+              <tr *ngFor="let data of data; let i = index">
+                <td>{{data.titulo}}</td>
+                <td>{{data.descripcion}}</td>
+                <td>{{data.nombre}}</td>
+                <td>{{data.fecha_fin}}</td>
                 <td><span class="badge bg-danger">Alta</span></td>
-                <td><span class="badge bg-warning">En progreso</span></td>
+                <td>
+                  <span class="badge text-white px-3 py-2 fs-6" [ngClass]="getEstadoColor(data.estado)">
+                    {{data.estado}}
+                  </span>
+                </td>
+                
+                         
                 <td>
                   <button class="btn btn-action"><i class='bx bx-edit'></i></button>
                   <button class="btn btn-action"><i class='bx bx-check'></i></button>
                 </td>
               </tr>
-              <tr>
-                <td>Desarrollo API</td>
-                <td>Implementar endpoints para usuarios</td>
-                <td>Carlos Ruiz</td>
-                <td>25/05/2025</td>
-                <td><span class="badge bg-warning">Media</span></td>
-                <td><span class="badge bg-success">Completado</span></td>
-                <td>
-                  <button class="btn btn-action"><i class='bx bx-edit'></i></button>
-                  <button class="btn btn-action"><i class='bx bx-check'></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>Pruebas de usabilidad</td>
-                <td>Realizar pruebas con usuarios finales</td>
-                <td>Laura Torres</td>
-                <td>28/05/2025</td>
-                <td><span class="badge bg-info">Baja</span></td>
-                <td><span class="badge bg-danger">Pendiente</span></td>
-                <td>
-                  <button class="btn btn-action"><i class='bx bx-edit'></i></button>
-                  <button class="btn btn-action"><i class='bx bx-check'></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>Despliegue en servidor</td>
-                <td>Configurar servidor y desplegar aplicación</td>
-                <td>Miguel Sánchez</td>
-                <td>01/06/2025</td>
-                <td><span class="badge bg-danger">Alta</span></td>
-                <td><span class="badge bg-danger">Pendiente</span></td>
-                <td>
-                  <button class="btn btn-action"><i class='bx bx-edit'></i></button>
-                  <button class="btn btn-action"><i class='bx bx-check'></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>Documentación técnica</td>
-                <td>Redactar documentación del proyecto</td>
-                <td>Ana Gómez</td>
-                <td>05/06/2025</td>
-                <td><span class="badge bg-warning">Media</span></td>
-                <td><span class="badge bg-danger">Pendiente</span></td>
-                <td>
-                  <button class="btn btn-action"><i class='bx bx-edit'></i></button>
-                  <button class="btn btn-action"><i class='bx bx-check'></i></button>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
         </div>

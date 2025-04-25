@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VistaActividad } from '../models/VistaActividad';
+import { TareaService } from '../services/tarea.service';
 
 @Component({
   selector: 'app-tarea',
@@ -6,32 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tarea.component.css']
 })
 export class TareaComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'priority', 'status'];
-  dataSource = ELEMENT_DATA;  
-  constructor() { }
+
+  data: VistaActividad[]=[];
+  displayedColumns: string[] = ['titulo', 'descripcion', 'nombre', 'fecha_fin', 'estado'];
+
+  constructor(private servicio: TareaService) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
-}
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  priority: string;
-  status: string;
+  getAll(){
+    this.servicio.getAll().subscribe(x => this.data = x);
+  }
+
+  getEstadoColor(estado: string): string {
+    switch (estado) {
+      case 'Progreso':
+        return 'bg-warning text-dark';     // Amarillo pálido
+      case 'Completada':
+        return 'bg-success text-dark';     // Verde pálido
+      case 'Programada':
+        return 'bg-info text-dark';        // Celeste pálido
+      case 'Cancelado':
+        return 'bg-secondary text-dark';   // Gris claro
+      default:
+        return 'bg-light text-dark';              // Fondo casi blanco
+    }
+  }
+  
+  
+
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', priority: 'Alta', status: 'En progreso' },
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He',priority: 'Alta', status: 'En progreso'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li',priority: 'Alta', status: 'En progreso'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be',priority: 'Alta', status: 'En progreso'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B',priority: 'Alta', status: 'En progreso'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C',priority: 'Alta', status: 'En progreso'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N',priority: 'Alta', status: 'En progreso'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O',priority: 'Alta', status: 'En progreso'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F',priority: 'Alta', status: 'En progreso'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne',priority: 'Alta', status: 'En progreso'},
-];

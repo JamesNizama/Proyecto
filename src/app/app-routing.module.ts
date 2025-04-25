@@ -9,6 +9,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 
 const routes: Routes = [
+  {path: '', component:DashboardComponent},
   {path: 'dashboard', component:DashboardComponent},
   {path: 'tareas', component:TareaComponent},
   {path: 'calendario', component:CalendarioComponent},
