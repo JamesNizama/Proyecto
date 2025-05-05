@@ -115,7 +115,7 @@
   
   /* Cards */
   .card {
-    background-color: var(--white);
+    background-color: #e8e9ff;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     transition: var(--transition);

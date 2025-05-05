@@ -4,7 +4,9 @@
     --light: #f8f9fa;
     --dark: #343a40;
     --white: #ffffff;
-    --border-radius: 10px;
+    --gray: #808080;
+    --purple: #997ad7;
+    --border-radius:10px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
   }

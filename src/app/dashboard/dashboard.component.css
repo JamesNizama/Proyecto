@@ -4,6 +4,8 @@
     --light: #f8f9fa;
     --dark: #343a40;
     --white: #ffffff;
+    --gray: #808080;
+    --violeta: #a965ff;
     --border-radius: 10px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
@@ -45,7 +47,7 @@
   }
   
   .sidebar-menu {
-    padding: 20px 0;
+    padding: 40px 0;
   }
   
   .menu-item {
@@ -115,14 +117,14 @@
   
   /* Cards */
   .card {
-    background-color: var(--white);
+    background-color: #a965ff;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     transition: var(--transition);
     border: none;
     margin-bottom: 20px;
   }
-  
+
   .card:hover {
     transform: translateY(-5px);
   }
@@ -133,14 +135,17 @@
     font-weight: 600;
   }
   
+  .card-body {
+    background-color: var(--white);
+  }
+
   .dashboard-card {
-    border-top: 4px solid var(--primary);
+    border-top: 10px solid var(--primary);
   }
   
   .dashboard-card .card-body {
     padding: 20px;
   }
-  
   .dashboard-card.teal {
     border-top-color: var(--secondary);
   }
@@ -159,33 +164,37 @@
   }
   
   .card-icon.teal {
-    background-color: rgba(64, 224, 208, 0.1);
+    background-color: var(--violeta);
+    background-color: rgba(64, 224, 224, 0.1);
     color: var(--secondary);
   }
-  
   .card-value {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
   
   .card-label {
     color: #6c757d;
-    font-size: 14px;
+    font-size: 15px;
   }
   
   /* Table */
   .table-container {
-    background-color: var(--white);
+    background-color: var(--dark);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    padding: 20px;
+    padding: 15px;
   }
   
+  .card-body2 {
+    background-color: var(--dark);
+  }
+
   .table th {
     font-weight: 600;
     color: var(--dark);
-    border-bottom-width: 1px;
+    border-bottom-width: 5px;
   }
   
   .badge-primary {
@@ -206,7 +215,8 @@
     background-color: #6a5acd;
     border-color: #6a5acd;
   }
-  
+
+
   .btn-secondary {
     background-color: var(--secondary);
     border-color: var(--secondary);
@@ -317,7 +327,7 @@
   /* Modals */
   .modal-header {
     background-color: var(--primary);
-    color: var(--white);
+    color: var(--violeta);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
   }
@@ -411,3 +421,17 @@
       display: flex;
     }
   }
+
+  .card-body2 {
+    background-color: #a965ff !important; /* Tu color personalizado */
+  }
+  
+  .card-body2 table {
+    background-color: #a965ff;
+  }
+  
+  .card-body2 th,
+  .card-body2 td {
+    background-color: #a965ff!important;
+  }
+  

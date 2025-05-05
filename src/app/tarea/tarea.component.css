@@ -8,6 +8,7 @@ table {
   --light: #f8f9fa;
   --dark: #343a40;
   --white: #ffffff;
+  --sky: #11e2e9;
   --border-radius: 10px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
@@ -119,7 +120,7 @@ body {
 
 /* Cards */
 .card {
-  background-color: var(--white);
+  background-color: #e8e9ff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: var(--transition);
@@ -180,7 +181,7 @@ body {
 
 /* Table */
 .table-container {
-  background-color: var(--white);
+  background-color: #e8e9ff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 20px;
