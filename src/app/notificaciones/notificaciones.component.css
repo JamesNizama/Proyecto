@@ -286,6 +286,7 @@
     align-items: flex-start;
     cursor: pointer;
     transition: var(--transition);
+    
   }
   
   .notification-item:hover {
