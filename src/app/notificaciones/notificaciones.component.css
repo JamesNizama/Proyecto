@@ -4,7 +4,7 @@
     --light: #f8f9fa;
     --dark: #343a40;
     --white: #ffffff;
-    --gray: #808080;
+    --gray: #e8e9ff;
     --border-radius: 10px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
@@ -281,12 +281,13 @@
   /* Notifications */
   .notification-item {
     padding: 15px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    background-color: var(--gray);  
     display: flex;
     align-items: flex-start;
     cursor: pointer;
+    margin: 3px 0;
     transition: var(--transition);
-    
+
   }
   
   .notification-item:hover {
