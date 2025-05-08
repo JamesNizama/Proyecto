@@ -17,7 +17,7 @@
 /*Posición del logo Paymen latam*/
 .logo-container {
   position: fixed;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   padding: 10px 15px;
   width: 190px;
   z-index: 1000;

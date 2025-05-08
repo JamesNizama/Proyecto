@@ -130,3 +130,33 @@
 :host ::ng-deep .fc-view-harness {
   flex: 1; /* Hace que el contenido del calendario sea flexible */
 }
+
+
+
+:host ::ng-deep .fc-event-main {
+  background: #04bac0  !important;
+  color: #000000 !important;
+}  
+
+/* Evento personalizado */
+:host ::ng-deep .fc-event {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* background: none !important;
+  border: none !important; */
+
+
+} :host ::ng-deep .fc-event-main {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 24px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+
+
+}:host ::ng-deep .fc-event-main {
+  background: #04bac0  !important;
+  color: #000000 !important;
+}

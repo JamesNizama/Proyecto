@@ -8,51 +8,39 @@ import { Modal } from 'bootstrap';
 
 // Decorador que define el componente Angular
 @Component({
-  selector: 'app-calendario', // Etiqueta para usar el componente en HTML
+  selector: 'app-calendario',
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
 export class CalendarioComponent implements OnInit, OnDestroy {
-  // Instancias del calendario y modales de Bootstrap
   calendar!: Calendar;
   modal!: Modal;
   deleteModal!: Modal;
-
-  // Evento actualmente seleccionado para editar o eliminar
   selectedEvent: any = null;
-
-  // Datos del formulario del evento
   eventTitle = '';
   eventDate = '';
   eventDescription = '';
   eventPriority = 'media';
-
   private resizeTimeout: any;
 
-  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
     this.initCalendar();
     this.deleteModal = new Modal(document.getElementById('confirmDeleteModal')!);
     window.addEventListener('resize', this.handleResize.bind(this));
   }
 
-  // Método que se ejecuta al destruir el componente
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.handleResize.bind(this));
     clearTimeout(this.resizeTimeout);
   }
 
-  // Maneja el redimensionamiento de la ventana
   private handleResize() {
     clearTimeout(this.resizeTimeout);
     this.resizeTimeout = setTimeout(() => {
-      if (this.calendar) {
-        this.calendar.updateSize();
-      }
+      this.calendar?.updateSize();
     }, 300);
   }
 
-  // Inicializa el calendario con configuraciones y eventos
   initCalendar() {
     const calendarEl = document.getElementById('calendar');
 
@@ -64,48 +52,41 @@ export class CalendarioComponent implements OnInit, OnDestroy {
       timeZone: 'America/Lima',
       firstDay: 1,
       contentHeight: 'auto',
-      aspectRatio: 1.5,       
+      aspectRatio: 1,
       handleWindowResize: true,
       expandRows: true,
-      titleFormat: {
-        year: 'numeric',
-        month: 'long'
-      },
+      titleFormat: { year: 'numeric', month: 'long' },
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,dayGridWeek'
       },
-      buttonText: {
-        today: 'Hoy',
-        month: 'Mes',
-        week: 'Semana',
-      },
+      buttonText: { today: 'Hoy', month: 'Mes', week: 'Semana' },
       events: this.getEventsFromStorage(),
       eventDisplay: 'auto',
-      eventClassNames: (arg) => [`fc-event-priority-${arg.event.extendedProps.priority}`],
+      eventContent: (arg) => ({
+        html: `<div class="fc-event-main">${arg.event.start?.getDate()}</div>`
+      }),
+      eventClassNames: (arg) => [
+        `fc-event-priority-${arg.event.extendedProps.priority}`,
+        'custom-event-style'
+      ],
       eventClick: this.handleEventClick.bind(this),
       dateClick: this.handleDateClick.bind(this),
-      windowResize: () => {
-        if (this.calendar) {
-          this.calendar.updateSize();
-        }
-      }
-      
+      windowResize: () => this.calendar?.updateSize()
     });
-    
 
     this.calendar.render();
     this.modal = new Modal(document.getElementById('eventModal')!);
     
-    // Fuerza un cálculo inicial del tamaño
-    setTimeout(() => this.calendar.updateSize(), 0);
+    setTimeout(() => {
+      this.calendar.updateSize();
+      setTimeout(() => this.calendar.updateSize(), 300);
+    }, 0);
   }
 
-  // Resto de métodos se mantienen igual...
   getEventsFromStorage(): EventInput[] {
-    const storedEvents = localStorage.getItem('calendarEvents');
-    return storedEvents ? JSON.parse(storedEvents) : [];
+    return JSON.parse(localStorage.getItem('calendarEvents') || '[]');
   }
 
   saveEventsToStorage(events: EventInput[]) {
@@ -149,7 +130,6 @@ export class CalendarioComponent implements OnInit, OnDestroy {
     }
 
     this.calendar.addEvent(eventData);
-
     this.saveEventsToStorage(
       this.calendar.getEvents().map(e => ({
         id: e.id,
@@ -161,6 +141,7 @@ export class CalendarioComponent implements OnInit, OnDestroy {
 
     this.modal.hide();
     this.resetForm();
+    setTimeout(() => this.calendar.updateSize(), 100);
   }
 
   handleDeleteEvent() {
@@ -172,15 +153,17 @@ export class CalendarioComponent implements OnInit, OnDestroy {
 
   confirmDelete() {
     this.selectedEvent.remove();
-    const updatedEvents = this.calendar.getEvents().map(e => ({
-      id: e.id,
-      title: e.title,
-      start: e.startStr,
-      extendedProps: e.extendedProps
-    }));
-    this.saveEventsToStorage(updatedEvents);
+    this.saveEventsToStorage(
+      this.calendar.getEvents().map(e => ({
+        id: e.id,
+        title: e.title,
+        start: e.startStr,
+        extendedProps: e.extendedProps
+      }))
+    );
     this.deleteModal.hide();
     this.resetForm();
+    setTimeout(() => this.calendar.updateSize(), 100);
   }
 
   resetForm() {
