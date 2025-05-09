@@ -29,6 +29,8 @@ import { ActividadComponent } from './components/actividad/actividad.component';
 //AGREGADO
 import { PersonasComponent } from './components/personas/personas.component';
 import { ControlHorarioComponent } from './components/control-horario/control-horario.component';
+import { LoginComponent } from './components/login/login.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 
@@ -46,7 +48,9 @@ import { ControlHorarioComponent } from './components/control-horario/control-ho
     ActividadComponent,
     //AGREGADO
     PersonasComponent,
-    ControlHorarioComponent
+    ControlHorarioComponent,
+    LoginComponent,
+    MenuComponent
 
   ],
   imports: [
