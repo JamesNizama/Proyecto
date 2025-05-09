@@ -133,30 +133,24 @@
 
 
 
-:host ::ng-deep .fc-event-main {
-  background: #04bac0  !important;
-  color: #000000 !important;
-}  
+/* Ocultar elementos residuales del evento por defecto */
+:host ::ng-deep .fc-event .fc-event-main-frame {
+  display: none !important;
+}
 
-/* Evento personalizado */
 :host ::ng-deep .fc-event {
-  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* background: none !important;
-  border: none !important; */
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
+}
 
 
-} :host ::ng-deep .fc-event-main {
-  width: 24px;
-  height: 24px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 24px;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
 
 
-}:host ::ng-deep .fc-event-main {
-  background: #04bac0  !important;
+:host ::ng-deep .fc-event-main {
   color: #000000 !important;
 }
+
+
+
+
