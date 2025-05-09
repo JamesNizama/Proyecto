@@ -1,0 +1,184 @@
+  <!-- Main Dashboard -->
+<div id="dashboard-page" >
+  <!-- Contenedor para el logo fuera del sidebar -->
+  <div class="logo-container">
+    <a href="javascript:void(0)" class="logo d-flex align-items-center">
+      <img src="assets/logo.png" alt="Logo" class="logo-img">
+      <!-- <span class="logo-text">Payment LATAM</span> -->
+    </a>
+  </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-menu">
+        <a routerLink="/menu/dashboard" routerLinkActive="active" class="menu-item">
+          <i class='bx bxs-dashboard'></i>
+          <span class="menu-label">Dashboard</span>
+        </a>
+        <a routerLink="/menu/actividades" routerLinkActive="active" class="menu-item">
+          <i class='bx bx-task'></i>
+          <span class="menu-label">Actividad</span>
+        </a>
+        <a routerLink="/menu/calendario" routerLinkActive="active" class="menu-item">
+          <i class='bx bx-calendar'></i>
+          <span class="menu-label">Calendario</span>
+        </a>
+        <a routerLink="/menu/proyectos" routerLinkActive="active" class="menu-item">
+          <i class='bx bx-briefcase'></i>
+          <span class="menu-label">Proyectos</span>
+        </a>
+        <a routerLink="/menu/reportes" routerLinkActive="active" class="menu-item">
+          <i class='bx bx-bar-chart-alt-2'></i>
+          <span class="menu-label">Reportes</span>
+        </a>
+        <a routerLink="/menu/notificaciones" routerLinkActive="active" class="menu-item">
+          <i class='bx bx-bell'></i>
+          <span class="menu-label">Notificaciones</span>
+        </a>
+  
+        <!--AGREGADO PERSONAS-->
+        <a routerLink="/menu/personas" routerLinkActive="active" class="menu-item">
+          <i class='bi bi-people-fill'></i>
+          <span class="menu-label">Personas</span>
+        </a>
+      
+      </div>
+      
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <div class="topbar">
+          <button class="btn sidebar-toggle d-lg-none" id="sidebar-toggle">
+              <i class="bi bi-list"></i>
+          </button>
+          
+          <div class="user-info">
+              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" alt="Perfil">
+              <div>
+                  <span class="fw-bold">Carlos Rodríguez</span>
+                  <small class="d-block text-muted">carlos.rodriguezuniversidad.edu</small>
+              </div>
+          </div>
+          
+          <div>
+              <button class="btn" id="logout-btn" (click)="logout()">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Cerrar sesión</span>
+              </button>
+          </div>
+           
+      </div>
+      
+      <router-outlet></router-outlet>
+  </div>
+  
+</div>
+ 
+
+<!-- Survey Modal -->
+<div class="modal fade" id="survey-modal" tabindex="-1" aria-labelledby="surveyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content survey-modal">
+          <div class="modal-header">
+              <h5 class="modal-title" id="surveyModalLabel">Encuesta de Satisfacción</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p>Ayúdanos a mejorar nuestro servicio respondiendo esta breve encuesta sobre el ticket #1072.</p>
+              
+              <form id="survey-form">
+                  <div class="survey-question">
+                      <label>1. ¿Qué tan satisfecho está con la resolución de su solicitud?</label>
+                      <div class="likert-scale">
+                          <div class="likert-option">
+                              <input type="radio" name="satisfaction" value="1" id="sat-1">
+                              <label for="sat-1">Muy insatisfecho</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="satisfaction" value="2" id="sat-2">
+                              <label for="sat-2">Insatisfecho</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="satisfaction" value="3" id="sat-3">
+                              <label for="sat-3">Neutral</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="satisfaction" value="4" id="sat-4">
+                              <label for="sat-4">Satisfecho</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="satisfaction" value="5" id="sat-5">
+                              <label for="sat-5">Muy satisfecho</label>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="survey-question">
+                      <label>2. ¿El tiempo de respuesta fue adecuado?</label>
+                      <div class="likert-scale">
+                          <div class="likert-option">
+                              <input type="radio" name="response-time" value="1" id="rt-1">
+                              <label for="rt-1">Muy lento</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="response-time" value="2" id="rt-2">
+                              <label for="rt-2">Lento</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="response-time" value="3" id="rt-3">
+                              <label for="rt-3">Neutral</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="response-time" value="4" id="rt-4">
+                              <label for="rt-4">Rápido</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="response-time" value="5" id="rt-5">
+                              <label for="rt-5">Muy rápido</label>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="survey-question">
+                      <label>3. ¿La comunicación fue clara y efectiva?</label>
+                      <div class="likert-scale">
+                          <div class="likert-option">
+                              <input type="radio" name="communication" value="1" id="com-1">
+                              <label for="com-1">Muy mala</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="communication" value="2" id="com-2">
+                              <label for="com-2">Mala</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="communication" value="3" id="com-3">
+                              <label for="com-3">Neutral</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="communication" value="4" id="com-4">
+                              <label for="com-4">Buena</label>
+                          </div>
+                          <div class="likert-option">
+                              <input type="radio" name="communication" value="5" id="com-5">
+                              <label for="com-5">Muy buena</label>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="mb-3">
+                      <label for="survey-comments" class="form-label">Comentarios adicionales (opcional)</label>
+                      <textarea class="form-control" id="survey-comments" rows="3"></textarea>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="submit-survey">Enviar Encuesta</button>
+          </div>
+      </div>
+  </div>
+</div>
+    
+  

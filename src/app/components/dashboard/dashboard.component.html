@@ -1,169 +1,122 @@
-    <!-- Dashboard Page -->
-    <div class="page-content" id="dashboard-page">
-        <div class="content-header">
-          <h1 class="page-title">Dashboard</h1>
-          <div class="dropdown">
-            <button class="btn btn-light position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class='bx bx-bell'></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                3
-              </span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="notificationDropdown">
-              <div class="notification-header">
-                <h6 class="mb-0">Notificaciones</h6>
-                <a href="javascript:void(0)" class="text-muted small">Marcar todo como leído</a>
-              </div>
-              <div class="notification-body">
-                <div class="notification-item">
-                  <div class="notification-icon">
-                    <i class='bx bx-task'></i>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="fw-semibold">Nueva tarea asignada</div>
-                    <div class="text-muted small">Se te ha asignado la tarea "Diseño de interfaz"</div>
-                    <div class="notification-time">Hace 10 minutos</div>
-                  </div>
-                </div>
-                <div class="notification-item">
-                  <div class="notification-icon teal">
-                    <i class='bx bx-calendar'></i>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="fw-semibold">Recordatorio de evento</div>
-                    <div class="text-muted small">Reunión de equipo en 30 minutos</div>
-                    <div class="notification-time">Hace 25 minutos</div>
-                  </div>
-                </div>
-                <div class="notification-item">
-                  <div class="notification-icon">
-                    <i class='bx bx-message-dots'></i>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="fw-semibold">Nuevo comentario</div>
-                    <div class="text-muted small">Carlos comentó en el proyecto "Rediseño"</div>
-                    <div class="notification-time">Hace 1 hora</div>
-                  </div>
-                </div>
-              </div>
-              <div class="p-2 border-top text-center">
-                <a href="javascript:void(0)" class="small text-primary text-decoration-none" data-page="notifications">Ver todas las notificaciones</a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card dashboard-card">
-              <div class="card-body">
-                <div class="card-icon">
-                  <i class='bx bx-task'></i>
-                </div>
-                <div class="card-value">12</div>
-                <div class="card-label">Tareas pendientes</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card dashboard-card teal">
-              <div class="card-body">
-                <div class="card-icon teal">
-                  <i class='bx bx-calendar'></i>
-                </div>
-                <div class="card-value">4</div>
-                <div class="card-label">Eventos próximos</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card dashboard-card">
-              <div class="card-body">
-                <div class="card-icon">
-                  <i class='bx bx-briefcase'></i>
-                </div>
-                <div class="card-value">7</div>
-                <div class="card-label">Proyectos en progreso</div>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="row mt-4">
-          <div class="col-md-8">
-            <div class="card">
-              <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Actividades recientes</h5>
-                <button class="btn btn-sm btn-primary"  routerLink="/actividades" routerLinkActive="active">Ver todas</button>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>Título</th>
-                        <th>Asignado a</th>
-                        <th>Fecha límite</th>
-                        <th>Estado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let data of data | slice:0:4; let i = index">
-                        <td>{{data.titulo}}</td>
-                        <td>{{data.nombre + " " + data.apellido}}</td>
-                        <td>{{ data.fecha_fin | date: 'yyyy-MM-dd' }}</td>
-                        <td>
-                          <span class="badge text-white px-3 py-2 fs-6 badge-background" [ngClass]="getEstadoColor(data.estado)">
-                            {{data.estado}}
-                          </span>
-                        </td>
-                      </tr>
-                    
+<!-- Dashboard Page -->
+<div class="page-content" id="dashboard-page">
+  <div class="content-header">
+    <h1 class="page-title">Dashboard</h1>
+    
+  </div>
 
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card dashboard-card">
+        <div class="card-body">
+          <div class="card-icon">
+            <i class='bx bx-task'></i>
+          </div>
+          <div class="card-value">12</div>
+          <div class="card-label">Tareas pendientes</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card dashboard-card teal">
+        <div class="card-body">
+          <div class="card-icon teal">
+            <i class='bx bx-calendar'></i>
+          </div>
+          <div class="card-value">4</div>
+          <div class="card-label">Eventos próximos</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card dashboard-card">
+        <div class="card-body">
+          <div class="card-icon">
+            <i class='bx bx-briefcase'></i>
+          </div>
+          <div class="card-value">7</div>
+          <div class="card-label">Proyectos en progreso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Actividades recientes</h5>
+          <button class="btn btn-sm btn-primary"  routerLink="/menu/actividades" routerLinkActive="active">Ver todas</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Asignado a</th>
+                  <th>Fecha límite</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of data | slice:0:4; let i = index">
+                  <td>{{data.titulo}}</td>
+                  <td>{{data.nombre + " " + data.apellido}}</td>
+                  <td>{{ data.fecha_fin | date: 'yyyy-MM-dd' }}</td>
+                  <td>
+                    <span class="badge text-white px-3 py-2 fs-6 badge-background" [ngClass]="getEstadoColor(data.estado)">
+                      {{data.estado}}
+                    </span>
+                  </td>
+                </tr>
+              
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Eventos próximos</h5>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+            <div class="bg-primary text-white rounded p-2 text-center me-3" style="width: 45px;">
+              <div class="small">MAY</div>
+              <div class="fw-bold">18</div>
+            </div>
+            <div>
+              <h6 class="mb-1">Reunión de equipo</h6>
+              <div class="small text-muted">9:30 - 11:00</div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">Eventos próximos</h5>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                  <div class="bg-primary text-white rounded p-2 text-center me-3" style="width: 45px;">
-                    <div class="small">MAY</div>
-                    <div class="fw-bold">18</div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Reunión de equipo</h6>
-                    <div class="small text-muted">9:30 - 11:00</div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                  <div class="bg-secondary text-white rounded p-2 text-center me-3" style="width: 45px;">
-                    <div class="small">MAY</div>
-                    <div class="fw-bold">20</div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Revisión de proyecto</h6>
-                    <div class="small text-muted">14:00 - 15:30</div>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center">
-                  <div class="bg-primary text-white rounded p-2 text-center me-3" style="width: 45px;">
-                    <div class="small">MAY</div>
-                    <div class="fw-bold">22</div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Entrega de informe</h6>
-                    <div class="small text-muted">Todo el día</div>
-                  </div>
-                </div>
-              </div>
+          <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+            <div class="bg-secondary text-white rounded p-2 text-center me-3" style="width: 45px;">
+              <div class="small">MAY</div>
+              <div class="fw-bold">20</div>
+            </div>
+            <div>
+              <h6 class="mb-1">Revisión de proyecto</h6>
+              <div class="small text-muted">14:00 - 15:30</div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="bg-primary text-white rounded p-2 text-center me-3" style="width: 45px;">
+              <div class="small">MAY</div>
+              <div class="fw-bold">22</div>
+            </div>
+            <div>
+              <h6 class="mb-1">Entrega de informe</h6>
+              <div class="small text-muted">Todo el día</div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+

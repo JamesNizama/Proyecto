@@ -97,7 +97,7 @@ export class ProyectosComponent implements OnInit {
   
     this.servicioItems.updateEstadoItem(dto).subscribe({  
       next: res => {
-        Swal.fire('¡Actualizado!', `Estado cambiado a "${nuevoEstado}".`, 'success');
+        // Swal.fire('¡Actualizado!', `Estado cambiado a "${nuevoEstado}".`, 'success');
         
         this.getItemsPorProyecto(this.newProyecto, () => {
           this.calcularProgresoYActualizarProyecto(); // <-- solo después de recargar los ítems
@@ -155,6 +155,7 @@ export class ProyectosComponent implements OnInit {
       this.modoEdicion = false;
       this.mostrarBotonModificar = false;
       this.itemsProyecto = []; // <-- Limpiar ítems al cerrar el modal
+      this.getAll();
     }
     
   poblarModal(proyectos: Proyecto): void {
@@ -296,13 +297,13 @@ export class ProyectosComponent implements OnInit {
         await this.servicioItems.saveItemsProyecto(item).toPromise();
       }
   
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Proyecto y sus ítems actualizados correctamente",
-        showConfirmButton: true,
-        timer: 3000
-      });
+      // Swal.fire({
+      //   position: "center",
+      //   icon: "success",
+      //   title: "Proyecto y sus ítems actualizados correctamente",
+      //   showConfirmButton: true,
+      //   timer: 3000
+      // });
   
       this.getAll();  // Refresca la lista de proyectos
       this.resetForm();  // Resetea el formulario después de guardar

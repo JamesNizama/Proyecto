@@ -1,0 +1,38 @@
+    <!-- Login Page -->
+    <div id="login-page">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-logo">
+                    <img src="assets/icono.png" alt="Logo Institucional">
+                    <h2 class="mt-3">Sistema de Actividades</h2>
+                </div>
+                
+                <form id="login-form" (ngSubmit)="login()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required>
+                        <div class="invalid-feedback">Por favor ingrese un correo electrónico válido.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required>
+                        <div class="invalid-feedback">La contraseña es requerida.</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label" for="remember">Recordar sesión</label>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <a href="javascript:void(0)" id="forgot-password">¿Olvidó su contraseña?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

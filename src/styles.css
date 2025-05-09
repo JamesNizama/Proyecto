@@ -1,4 +1,7 @@
 :root {
+    --primary-color: #85cec8;
+    /* --primary-dark: #e6b800;
+    --primary-light: #ffe066; */
     --primary: #7B68EE;
     --secondary: #40E0D0;
     --light: #f8f9fa;
@@ -7,6 +10,7 @@
     --border-radius: 10px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --sidebar-width: 250px;
   }
   
   body {
@@ -69,6 +73,7 @@
     font-size: 20px;
   }
   
+  
   /* Mobile Bottom Nav */
   .mobile-nav {
     display: none;
@@ -94,10 +99,9 @@
   
   /* Main Content */
   .main-content {
-    margin-left: 240px;
-    padding: 20px;
-    min-height: 100vh;
-    transition: var(--transition);
+    margin-left: var(--sidebar-width);
+    padding: 1rem;
+    transition: all 0.3s;
   }
   
   .content-header {
@@ -368,6 +372,8 @@
     max-height: 320px;
     overflow-y: auto;
   }
+
+  
   
   /* Responsive */
   @media (max-width: 991.98px) {
