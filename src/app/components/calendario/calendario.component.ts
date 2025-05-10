@@ -95,8 +95,8 @@ export class CalendarioComponent implements OnInit, OnDestroy {
         if (el) {
           const htmlEl = el as HTMLElement;
           htmlEl.style.position = 'absolute';
-          htmlEl.style.top = '-25px';         // Altura personalizada dentro de la celda
-          htmlEl.style.left = '93%';         // Centrado horizontal
+          htmlEl.style.top = '-27px';         // Altura personalizada dentro de la celda
+          htmlEl.style.left = '95%';         // Centrado horizontal
           htmlEl.style.transform = 'translateX(-50%)';
           htmlEl.style.width = '16px';       // Ancho fijo
           htmlEl.style.height = '16px';      // Alto fijo
@@ -105,7 +105,7 @@ export class CalendarioComponent implements OnInit, OnDestroy {
           htmlEl.style.background = '#04bac0';
           htmlEl.style.color = '#000000';
           htmlEl.style.textAlign = 'center';
-          htmlEl.style.fontSize = '15px'; 
+          htmlEl.style.fontSize = '16px'; 
           htmlEl.style.zIndex = '1'; // Por si hay eventos superpuestos
         }
       },
